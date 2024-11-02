@@ -1,0 +1,25 @@
+<!-- modifier-salle.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Salle</title>
+</head>
+<body>
+<h1>Update Salle</h1>
+<form action="#" th:action="@{/salle/modifier/{id}(id=${salle.id})}" th:object="${salle}" method="post">
+    <label for="nom">Nom de la Salle</label>
+    <input type="text" th:field="*{nom}" id="nom" placeholder="Nom de la Salle" required>
+    <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+
+    <label for="capacite">Capacité</label>
+    <input type="number" th:field="*{capacite}" id="capacite" placeholder="Capacité" required>
+    <span th:if="${#fields.hasErrors('capacite')}" th:errors="*{capacite}"></span>
+
+    <label for="equipements">Équipements</label>
+    <input type="text" th:field="*{equipements}" id="equipements" placeholder="Équipements">
+    <span th:if="${#fields.hasErrors('equipements')}" th:errors="*{equipements}"></span>
+
+    <input type="submit" value="Update Salle">
+</form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Salles</title>
+</head>
+<body>
+<h1>Liste des Salles</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nom</th>
+        <th>Capacité</th>
+        <th>Équipements</th>
+        <th>Actions</th> <!-- Ajout de la colonne Actions -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="salle : ${salles}"> <!-- Correction de ${salle} à ${salles} -->
+        <td th:text="${salle.nom}"></td>
+        <td th:text="${salle.capacite}"></td>
+        <td th:text="${salle.equipements}"></td>
+        <td>
+            <a th:href="@{/salle/modifier/{id}(id=${salle.id})}">Modifier</a> |
+            <a th:href="@{/salle/supprimer/{id}(id=${salle.id})}" th:onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette salle ?');">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/salle/ajouter}">Ajouter une Salle</a>
+</body>
+</html>
